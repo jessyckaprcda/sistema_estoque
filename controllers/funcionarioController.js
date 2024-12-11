@@ -34,39 +34,6 @@ const funcionarioController = {
     }
   },
 
-  loginPage: (req, res) => {
-    res.render('loginFuncionario');
-  },
-
-  login: async (req, res) => {
-    try {
-      const { email, senha } = req.body;
-
-      const funcionario = await prismaClient.funcionario.findUnique({
-        where: { email },
-      });
-
-      if (!funcionario) {
-        return res.status(400).send('Email inválido.');
-      }
-
-      const senhaValida = await bcrypt.compare(senha, funcionario.senha);
-
-      if (!senhaValida) {
-        return res.status(400).send('Senha inválida.');
-      }
-
-      req.session.funcionarioId = funcionario.id_funcionario;
-      res.render('funcionarioIndex', {
-        funcionario: funcionario, 
-        id_funcionario: funcionario.id_funcionario 
-    });
-    
-    } catch (err) {
-      res.status(500).send('Erro ao realizar login: ' + err.message);
-    }
-  },
-
   funcionarioIndex: async (req, res) => {
     try {
       const { id_funcionario } = req.params;

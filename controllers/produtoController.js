@@ -28,6 +28,19 @@ const produtoController = {
           res.status(500).send('Erro ao cadastrar o produto: ' + err.message);
         }
       },
+
+      listarProdutosEmpresa: async (req, res) => {
+        const { id_empresa } = req.params;
+        const idEmpresaInt = parseInt(id_empresa);
+      
+        const produtos = await prismaClient.produto.findMany({
+            where: { id_empresa: idEmpresaInt },
+            orderBy: {nome_produto: 'asc' },
+        });
+        res.render('listarProdutos', { produtos });
+      }
+
+      
 };  
 
 

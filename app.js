@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const authRoutes = require('./routes/authRoutes');
 const empresaRoutes = require('./routes/empresaRoutes');
 const funcionarioRoutes = require('./routes/funcionarioRoutes');
 const produtoRoutes = require('./routes/produtoRoutes');
@@ -20,6 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+app.use('/auth', authRoutes);
 
 app.use('/', empresaRoutes);
 app.use('/funcionario', funcionarioRoutes);
