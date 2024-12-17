@@ -62,7 +62,6 @@ const empresaController = {
     }
   },
 
-  // Atualizar um funcionário
   atualizarEmpresa: async (req, res) => {
     try {
       const { id_empresa } = req.params;

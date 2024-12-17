@@ -1,14 +1,11 @@
 const funcionarioModel = require('../models/funcionarioModel');
-const empresaModel = require('../models/empresaModel'); // Certifique-se de que este modelo existe e está configurado
-
+const empresaModel = require('../models/empresaModel'); 
 const funcionarioController = {
-  // Página de cadastro de funcionário
   cadastroPage: (req, res) => {
     const { id_empresa } = req.params;
     res.render('cadastro-funcionario', { id_empresa });
   },
 
-  // Cadastrar um novo funcionário
   cadastrarFuncionario: async (req, res) => {
     try {
       const funcionario = await funcionarioModel.create(req.body);
@@ -18,7 +15,6 @@ const funcionarioController = {
     }
   },
 
-  // Página inicial do funcionário
   funcionarioIndex: async (req, res) => {
     try {
       const { id_funcionario } = req.params;
@@ -40,7 +36,6 @@ const funcionarioController = {
     }
   },
 
-  // Listar funcionários de uma empresa
   listarFuncionarios: async (req, res) => {
     try {
       const { id_empresa } = req.params;
@@ -57,7 +52,6 @@ const funcionarioController = {
     }
   },
 
-  // Página de edição de funcionário
   editarFuncionarioPage: async (req, res) => {
     try {
       const { id_funcionario } = req.params;
@@ -73,7 +67,6 @@ const funcionarioController = {
     }
   },
 
-  // Atualizar um funcionário
   atualizarFuncionario: async (req, res) => {
     try {
       const { id_funcionario } = req.params;
@@ -89,7 +82,6 @@ const funcionarioController = {
     }
   },
 
-  // Excluir um funcionário
   excluirFuncionario: async (req, res) => {
     try {
       const { id_funcionario } = req.params;

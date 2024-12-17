@@ -13,7 +13,6 @@
     <p class="text-center">Funcionário ID: <%= id_funcionario %></p>
 
     <div class="row">
-      <!-- Lista de Produtos -->
       <div class="col-md-6">
         <div class="table-responsive bg-white text-danger rounded shadow">
           <table class="table table-striped table-hover table-bordered mb-0">
@@ -38,8 +37,6 @@
           </table>
         </div>
       </div>
-
-      <!-- Formulário de Movimentação -->
       <div class="col-md-6">
         <form method="POST" action="/movimentacao/registrar" class="bg-light text-danger p-4 rounded shadow">
           <input type="hidden" name="id_funcionario" value="<%= id_funcionario %>" />
